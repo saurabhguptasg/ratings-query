@@ -2,11 +2,13 @@ package io.pivotal.poc.spring.ratings;
 
 import io.pivotal.poc.spring.ratings.controllers.ResponseInterceptor;
 import io.pivotal.poc.spring.ratings.data.ObjectDatabase;
+import io.pivotal.poc.spring.ratings.data.RedisConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -30,6 +32,7 @@ public class Application {
 
   @Bean
   public ObjectDatabase getObjectDatabase() {
+    System.out.println("*******>>>>>> get object database called");
     return new ObjectDatabase();
 //    return ObjectDatabase.getInstance();
   }

@@ -10,12 +10,14 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
+import java.util.logging.Logger;
 
 /**
  * Created by sgupta on 10/30/14.
  */
 @Component
 public class ObjectDatabase {
+  private static final Logger LOGGER = Logger.getLogger(ObjectDatabase.class.getName());
 
 //  private final Map<String,Map<String,?>> tables;
   private final Map<String,GenericRepository<? extends Identifiable>> templates;
@@ -24,6 +26,7 @@ public class ObjectDatabase {
   private RedisConnectionFactory redisConnectionFactory;
 
   public ObjectDatabase() {
+    LOGGER.info(">>>>>>>> created new object database instance!");
 //    tables = new HashMap<>();
     templates = new HashMap<>();
   }
